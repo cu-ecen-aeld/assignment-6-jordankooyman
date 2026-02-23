@@ -1,5 +1,5 @@
 # Recipe created by recipetool
-# Updated with assistance from DeepSeek: https://chat.deepseek.com/share/bc8l0zt9bbune09m32
+# Updated with assistance from DeepSeek: https://chat.deepseek.com/share/bc8l0zt9bbune09m32, https://chat.deepseek.com/share/e6s1esxlw7jjnlsz64
 # This is the basis of a recipe and may need further editing in order to be fully functional.
 # (Feel free to remove these comments when editing.)
 
@@ -25,12 +25,12 @@ SRC_URI += "file://scull-init.sh"
 
 inherit update-rc.d
 INITSCRIPT_PACKAGES = "${PN}"
-INITSCRIPT_NAME:${PN} = "scull-init.sh"
+INITSCRIPT_NAME:${PN} = "scull"
 
-MODULES_INSTALL_TARGET = "install"
 EXTRA_OEMAKE:append = " -C ${STAGING_KERNEL_DIR} M=${S}/scull EXTRA_CFLAGS=-I${S}/include"
 
 do_install:append() {
     install -d ${D}${sysconfdir}/init.d
     install -m 0755 ${WORKDIR}/scull-init.sh ${D}${sysconfdir}/init.d/scull
 }
+FILES:${PN} += "${sysconfdir}/init.d/scull"

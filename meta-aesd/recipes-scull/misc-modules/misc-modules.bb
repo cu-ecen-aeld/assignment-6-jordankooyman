@@ -1,5 +1,5 @@
 # Recipe created by recipetool
-# Updated with assistance from DeepSeek: https://chat.deepseek.com/share/40gx60ztldz0odbduw
+# Updated with assistance from DeepSeek: https://chat.deepseek.com/share/40gx60ztldz0odbduw, https://chat.deepseek.com/share/e6s1esxlw7jjnlsz64
 # This is the basis of a recipe and may need further editing in order to be fully functional.
 # (Feel free to remove these comments when editing.)
 
@@ -26,12 +26,12 @@ SRC_URI += "file://misc-init.sh"
 
 inherit update-rc.d
 INITSCRIPT_PACKAGES = "${PN}"
-INITSCRIPT_NAME:${PN} = "misc-init.sh"
+INITSCRIPT_NAME:${PN} = "misc"
 
-MODULES_INSTALL_TARGET = "install"
 EXTRA_OEMAKE:append = " -C ${STAGING_KERNEL_DIR} M=${S}/misc-modules EXTRA_CFLAGS=-I${S}/include"
 
 do_install:append() {
     install -d ${D}${sysconfdir}/init.d
     install -m 0755 ${WORKDIR}/misc-init.sh ${D}${sysconfdir}/init.d/misc
 }
+FILES:${PN} += "${sysconfdir}/init.d/misc"
