@@ -1,5 +1,5 @@
 # Recipe created by recipetool
-# Updated with assistance from DeepSeek: https://chat.deepseek.com/share/bc8l0zt9bbune09m32
+# Updated with assistance from DeepSeek: https://chat.deepseek.com/share/40gx60ztldz0odbduw
 # This is the basis of a recipe and may need further editing in order to be fully functional.
 # (Feel free to remove these comments when editing.)
 
@@ -11,6 +11,8 @@
 #   LICENSE
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171dd6425610833a22dbe6"
+
+PN = "misc-modules"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
