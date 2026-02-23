@@ -18,7 +18,7 @@ SRC_URI = "git://git@github.com/cu-ecen-aeld/assignment-7-jordankooyman.git;prot
 PV = "1.0+git${SRCPV}"
 SRCREV = "9577cd1e389f13013f548e018b1c7d2fa11fd071"
 
-S = "${WORKDIR}/${BP}"
+S = "${WORKDIR}/git"
 inherit module
 
 SRC_URI += "file://scull-init.sh"
@@ -28,7 +28,7 @@ INITSCRIPT_PACKAGES = "${PN}"
 INITSCRIPT_NAME:${PN} = "scull-init.sh"
 
 MODULES_INSTALL_TARGET = "install"
-EXTRA_OEMAKE:append = " -C ${STAGING_KERNEL_DIR} M=${S}/scull"
+EXTRA_OEMAKE:append = " -C ${STAGING_KERNEL_DIR} M=${S}/scull EXTRA_CFLAGS=-I${S}/include"
 
 do_install:append() {
     install -d ${D}${sysconfdir}/init.d

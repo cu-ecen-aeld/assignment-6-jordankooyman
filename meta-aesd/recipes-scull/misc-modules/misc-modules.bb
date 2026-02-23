@@ -12,15 +12,14 @@
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171dd6425610833a22dbe6"
 
-PN = "misc-modules"
-
 SRC_URI = "git://git@github.com/cu-ecen-aeld/assignment-7-jordankooyman.git;protocol=ssh;branch=main"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
 SRCREV = "9577cd1e389f13013f548e018b1c7d2fa11fd071"
 
-S = "${WORKDIR}/${BP}"
+
+S = "${WORKDIR}/git"
 inherit module
 
 SRC_URI += "file://misc-init.sh"
@@ -30,7 +29,7 @@ INITSCRIPT_PACKAGES = "${PN}"
 INITSCRIPT_NAME:${PN} = "misc-init.sh"
 
 MODULES_INSTALL_TARGET = "install"
-EXTRA_OEMAKE:append = " -C ${STAGING_KERNEL_DIR} M=${S}/misc-modules"
+EXTRA_OEMAKE:append = " -C ${STAGING_KERNEL_DIR} M=${S}/misc-modules EXTRA_CFLAGS=-I${S}/include"
 
 do_install:append() {
     install -d ${D}${sysconfdir}/init.d
