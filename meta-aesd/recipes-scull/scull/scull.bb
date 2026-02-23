@@ -12,11 +12,7 @@
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171dd6425610833a22dbe6"
 
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
-
-SRC_URI = "git://git@github.com/cu-ecen-aeld/assignment-7-jordankooyman.git;protocol=ssh;branch=main \
-           file://0001-Update-LDD-Build-to-only-do-misc-modules-and-scull.patch \
-           "
+SRC_URI = "git://git@github.com/cu-ecen-aeld/assignment-7-jordankooyman.git;protocol=ssh;branch=main"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
